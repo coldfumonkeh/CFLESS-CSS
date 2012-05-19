@@ -30,13 +30,13 @@
 	<cfset FileName  = REReplaceNoCase(name, '(?:\.(?:less))?$', "") />
 	<cfset FileName = FileName & '.css' />
 	
-	<cffile action="read" file="#projectFolderLocation#/#name#" variable="inputLESS" />
+	<cffile action="read" file="#directory#/#name#" variable="inputLESS" />
 	<cfset outputCSS = engine.compile(inputLESS) />
-	<cffile action="write" file="#projectFolderLocation#/#FileName#" output="#outputCSS#" />
+	<cffile action="write" file="#directory#/#FileName#" output="#outputCSS#" />
 	
 	<cfset stuFileDetails = structNew() />
-	<cfset stuFileDetails['originalPath'] = projectFolderLocation & '/' & name />
-	<cfset stuFileDetails['processedPath'] = projectFolderLocation & '/' & FileName />
+	<cfset stuFileDetails['originalPath'] = directory & '/' & name />
+	<cfset stuFileDetails['processedPath'] = directory & '/' & FileName />
 	
 	<cfset arrayAppend(arrDetails,stuFileDetails) />
 
