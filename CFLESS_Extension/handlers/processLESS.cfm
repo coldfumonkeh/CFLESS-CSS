@@ -8,7 +8,7 @@
 
 <cfscript>
 	xmldoc 					= xmlParse(ideeventinfo);
-	response 				= xmlSearch(xmldoc,"//resource");
+	response 				= xmlSearch(xmldoc,"//resource");	
 	projectFolderLocation 	= response[1].XmlAttributes.path;
 
 	thisPath = getDirectoryFromPath(getCurrentTemplatePath());
@@ -35,8 +35,8 @@
 	<cffile action="write" file="#projectFolderLocation#/#FileName#" output="#outputCSS#" />
 	
 	<cfset stuFileDetails = structNew() />
-	<cfset stuFileDetails['originalPath'] = projectFolderLocation & name />
-	<cfset stuFileDetails['processedPath'] = projectFolderLocation & FileName />
+	<cfset stuFileDetails['originalPath'] = projectFolderLocation & '/' & name />
+	<cfset stuFileDetails['processedPath'] = projectFolderLocation & '/' & FileName />
 	
 	<cfset arrayAppend(arrDetails,stuFileDetails) />
 
